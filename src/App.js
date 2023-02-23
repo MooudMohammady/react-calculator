@@ -1,40 +1,47 @@
+/* eslint-disable no-eval */
 import { useState } from "react";
 
 export default function App() {
   const [result, setResult] = useState(" ");
-  const [isFloat,setFloat] = useState(true);
+  const [isFloat, setFloat] = useState(true);
 
   const btnClickHandeler = (e) => {
-    if(e.target.innerText === "."){
-      if(isFloat){
-        setResult(result + e.target.innerText)
+    if (e.target.innerText === ".") {
+      if (isFloat) {
+        setResult(result + e.target.innerText);
         setFloat(false);
       }
-  }else
-      setResult(result + e.target.innerText)
+    } else setResult(result + e.target.innerText);
   };
   const resultClickHandeler = () => {
     setResult(eval(result));
     setFloat(true);
   };
-  const clearHandeler = ()=>{
+  const clearHandeler = () => {
     setResult("");
     setFloat(true);
-  }
+  };
 
-  window.addEventListener("keyup",(e)=>{
-    if((e.key >= 0 & e.key <= 9) || (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/"))
-      setResult(result + e.key + "");
-    if(e.key === "Enter"){
-      setResult((result)=> result = eval(result));
-      setFloat(true);
-    }
-    if(e.key === ".")
-      if(isFloat){
-        setResult(result + ".")
-        setFloat(false);
-      }
-  })
+  window.addEventListener("keyup", (e) => {
+    setTimeout(() => {
+      if (
+        (e.key >= 0) & (e.key <= 9) ||
+        e.key === "+" ||
+        e.key === "-" ||
+        e.key === "*" ||
+        e.key === "/"
+      )
+        setResult(result + e.key + "");
+      else if (e.key === "Enter") {
+        setResult((result) => (result = eval(result)));
+        setFloat(true);
+      } else if (e.key === ".")
+        if (isFloat) {
+          setResult(result + ".");
+          setFloat(false);
+        }
+    }, 0);
+  });
 
   return (
     <div className="bg-slate-200 grid place-items-center h-[100vh] text-slate-700">
