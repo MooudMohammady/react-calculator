@@ -44,12 +44,12 @@ export default function App() {
   });
 
   return (
-    <div className="bg-slate-200 grid place-items-center h-[100vh] text-slate-700">
-      <div className="bg-gradient-to-br from-white to-slate-300 w-full sm:w-96 h-[700px] sm:h-[500px] rounded-lg shadow-xl flex flex-col justify-between p-5">
-        <div className="text-3xl py-4 px-2 rounded-md bg-gradient-to-br from-slate-300 to-white shadow-inner h-[70px] overflow-x-auto">
+    <div className="grid h-[100vh] place-items-center bg-slate-200 text-slate-700">
+      <div className="flex h-[700px] w-full flex-col justify-between rounded-lg bg-gradient-to-br from-white to-slate-300 p-5 shadow-xl sm:h-[500px] sm:w-96">
+        <div className="h-[70px] overflow-x-auto rounded-md bg-gradient-to-br from-slate-300 to-white py-4 px-2 text-3xl shadow-inner">
           {result}
         </div>
-        <div className="grid grid-cols-4 grid-rows-5 gap-2 h-[450px] sm:h-80">
+        <div className="grid h-[450px] grid-cols-4 grid-rows-5 gap-2 sm:h-80">
           <button onClick={clearHandeler} className="cal-btn">
             CE
           </button>
